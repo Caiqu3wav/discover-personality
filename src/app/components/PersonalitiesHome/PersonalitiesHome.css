@@ -1,0 +1,17 @@
+.personalities-home-content h2{
+    font-family: 'Luckiest Guy', cursive;
+    color: rgb(194, 224, 109);
+    letter-spacing: 1px;
+    font-size: 22px;
+    box-shadow: 1px 3px 3px 3px rgb(168, 250, 45, 0.6);
+    padding: 0 10px 0 10px;
+}
+
+.personalities-home-content p{
+    margin-top: 8px;
+}
+
+.personalities-home-content h1{
+    font-family: 'Salsa', cursive;
+    font-size: 25px;
+}
