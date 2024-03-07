@@ -1,3 +1,9 @@
 .hero-container-one{
   background-color: beige;
 }
+
+@media screen and (max-width: 538px) {
+  .hero-container-one p{
+    font-size: 17px;
+  }
+}

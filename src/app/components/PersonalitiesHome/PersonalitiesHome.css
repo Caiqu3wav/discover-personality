@@ -10,6 +10,11 @@
 .personalities-home-content p{
     margin-top: 8px;
 }
+@media screen and (max-width: 579px) {
+    .personalities-home-content p{
+        font-size: 17px;
+    }
+}
 
 .personalities-home-content h1{
     font-family: 'Salsa', cursive;

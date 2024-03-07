@@ -9,6 +9,12 @@ a{
     font-weight: bold;
 }
 
+@media screen and (max-width: 452px) {
+    a{
+        font-size: 16px;
+    }
+}
+
 hr{
     border: solid 1px rgb(105, 100, 100, 0.6);
-}
+} 

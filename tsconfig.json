@@ -29,7 +29,7 @@
     "**/*.ts",
     "**/*.tsx",
     "src/app/components/test/options.js"
-  ],
+, "src/pages/result/[result].js"  ],
   "exclude": [
     "node_modules"
   ]

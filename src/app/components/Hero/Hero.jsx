@@ -8,9 +8,9 @@ export default function Hero() {
 
     return(
         <main className="flex flex-col">
-        <div className="flex">
-        <div className="hero-container-one w-[750px] flex flex-col gap-3 ml-20 rounded-xl mt-2 pb-4 text-bold">
-            <h1 className="text-green-500 text-[40px]">O que é o MBTI</h1>
+        <div className="flex justify-around">
+        <div className="hero-container-one w-[750px] flex flex-col gap-3 ml-20 rounded-xl mt-2 pb-4 text-bold majorthree0.5:ml-10 midtw:ml-4">
+            <h1 className="text-green-500 font-bold text-[40px] midtwo2:text-[32px]">O que é o MBTI</h1>
             <p>O MBTI, abreviação para "Indicador de Tipo Myers-Briggs", constitui um estudo 
                 psicológico que postula a existência de 16 tipos distintos de personalidades na sociedade. 
                 Cada tipo tem a combinação de quatro letras: E para extroversão,

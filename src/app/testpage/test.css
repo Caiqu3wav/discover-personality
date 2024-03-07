@@ -1,0 +1,14 @@
+#h1-test-title {
+    text-align: center;
+  }
+  
+  .div-test {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .lbl-test {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
