@@ -3,7 +3,6 @@ import NavVertBar from "../NavVertBar/NavVertBar";
 import PersonalitiesHome from "../PersonalitiesHome/PersonalitiesHome";
 import Link from "next/link";
 
-
 export default function Hero() {
 
     return(

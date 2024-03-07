@@ -52,7 +52,7 @@ export default function Header() {
     return(
         <header className="h-[100px] lowone:h-[85px]">
             <nav className="justify-between flex">
-            <Image className="midtwo4:w-[140px] lowtwo:w-[110px]" src={DiscoveryLogo} alt="Discovery Logo"/>
+            <Link href="/"><Image className="midtwo4:w-[140px] lowtwo:w-[110px]" src={DiscoveryLogo} alt="Discovery Logo"/></Link>
                 <ul className="flex flex-row gap-16 mt-8 majortwo4:hidden">
                     <Link href="/"><li>Home</li></Link>
                     <li>Blogs</li>
@@ -74,7 +74,7 @@ export default function Header() {
       )}
 
       <aside
-        className={`transform top-0 left-0 w-64 bg-red-200 bg-opacity-80 lowtwo2:w-44 lowthreetwo:w-36 text-white font-extrabold fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30 ${
+        className={`transform top-0 left-0 w-64 bg-red-200 bg-opacity-95 lowtwo2:w-44 lowthreetwo:w-36 text-white font-extrabold fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30 ${
           isActive ? "translate-x-0" : "-translate-x-full"
         }`}
       >

@@ -10,15 +10,15 @@ import TiLogo from "../../../../public/assets/img/tilogo.png"
 import FeLogo from "../../../../public/assets/img/FeLogo.png"
 import FiLogo from "../../../../public/assets/img/FiLogo.png"
 import Functionstypesrp from "../../../../public/assets/img/functions--types.png"
-
 import "./heroFP.css"
+import MainDiv from "../MainDiv/MainDiv";
 
 export default function HeroFP() {
 
     return (
         <main className="flex flex-col">
             <div className="flex">
-                <div className="hero-container-one w-[750px] flex flex-col gap-3 ml-20 pb-4 rounded-xl mt-2 text-bold">
+                <MainDiv>
                     <h1 className="text-green-500 text-[40px]">Funções Cognitivas</h1>
                    <p>As funções cognitivas estão intrinsecamente ligadas à maneira como os seres humanos pensam, 
                     cada um apresentando uma função dominante que exerce a maior influência naturalmente. Além disso,
@@ -41,12 +41,13 @@ export default function HeroFP() {
 
                      <h1 className="text-orange-400 text-[40px]">Intuição</h1>
 
-                     <div className="flex">
+                     <div className="flex majortwo4:flex-col majortwo4:items-center majortwo4:justify-center majortwo4:text-center">
                         <div className="flex flex-col w-[20%]">
-                              <Image className="w-[100px] relative left-5" src={NiLogo} alt="Function logo"/>
+                              <Image className="w-[100px] relative left-5 midtwo:w-[160px]" src={NiLogo} alt="Function logo"/>
                               <h2 className="font-bold">Intuição Introvertida</h2>        
                               </div>       
-                              <div className="w-[80%]"><p className="text-[17px] font-semibold">A função de intuição introvertida, predominante nos tipos de personalidade INTJ e INFJ, é 
+                              <div className="w-[80%]"><p className="text-[17px] font-semibold
+                             majortwo3:text-[15px] text-center">A função de intuição introvertida, predominante nos tipos de personalidade INTJ e INFJ, é 
                                 caracterizada por pensamentos abstratos, visão mental, simbolismo, sonhos, metáforas, insights, 
                                 profundidade e busca de significado. Essa intuição se manifesta frequentemente por meio de símbolos, 
                                 imagens e padrões. Os indivíduos com essa função, conhecida como Ni, são descritos como sonhadores, 
@@ -58,12 +59,13 @@ como Jean Paul Sartre e Frederich Nietzsche, expressaram a importância da esté
 é irônica, pois superficialmente parece ser semelhante aos tipos opostos, ESFPs/ESTPs, que também usam a função sensorial Se, embora 
 de maneira mais consciente.</p></div>   
                      </div>
-<div className="flex mt-5">
+<div className="flex mt-5 majortwo4:flex-col majortwo4:items-center majortwo4:justify-center majortwo4:text-center">
    <div className="flex flex-col w-[20%] text-center">
-         <Image className="w-[100px] relative left-5" src={NeLogo} alt="Function logo"/>
+         <Image className="w-[100px] relative left-5 midtwo:w-[160px]" src={NeLogo} alt="Function logo"/>
          <h2 className="font-bold">Intuição Extrovertida</h2>        
          </div>       
-         <div className="w-[80%]"><p className="text-[17px] font-semibold">A função de intuição extrovertida, dominante 
+         <div className="w-[80%]"><p className="text-[17px] font-semibold
+         majortwo3:text-[15px]">A função de intuição extrovertida, dominante 
          nos tipos de personalidade ENFP e ENTP, é caracterizada por um pensamento aberto, criativo e voltado para o futuro.
           Essa função está associada a conceitos como possibilidades, conexões, ideias inovadoras, improvisação e exploração
            de novos caminhos. A intuição extrovertida, ou Ne, se manifesta frequentemente por meio de associações de ideias, 
@@ -79,12 +81,12 @@ contribui para uma abordagem expansiva e adaptável ao lidar com desafios e proj
  personalidade.</p></div>   
 </div>
 <h1 className="text-blue-400 text-[40px]">Sensação</h1>
-<div className="flex mt-5">
+<div className="flex mt-5 majortwo4:flex-col majortwo4:items-center majortwo4:justify-center majortwo4:text-center">
    <div className="flex flex-col w-[20%] text-center">
-         <Image className="w-[100px] relative left-5" src={SiLogo} alt="si Function logo"/>
+         <Image className="w-[100px] relative left-5 midtwo:w-[160px]" src={SiLogo} alt="si Function logo"/>
          <h2 className="font-bold">Sensação Introvertida</h2>        
          </div>       
-         <div className="w-[80%]"><p className="text-[17px] font-semibold">A função de sensação introvertida, 
+         <div className="w-[80%]"><p className="text-[17px] font-semibold majortwo3:text-[15px]">A função de sensação introvertida, 
          predominante nos tipos de personalidade ISFJ e ISTJ, destaca-se pela atenção cuidadosa aos detalhes, 
          foco no presente e apreciação de experiências concretas. Essa função, conhecida como Si, está associada 
          a uma consciência aguçada do ambiente, memórias detalhadas e uma abordagem prática da vida. <br />
@@ -98,12 +100,12 @@ Termos como memória detalhada, consciência sensorial, tradição e consistênc
 introvertida. A abordagem pragmática, a atenção aos detalhes e a preferência por rotinas confiáveis são características
  distintivas dos indivíduos que têm a Si como função principal em sua personalidade.</p></div>   
 </div>
-<div className="flex mt-5">
+<div className="flex mt-5 majortwo4:flex-col majortwo4:items-center majortwo4:justify-center majortwo4:text-center">
    <div className="flex flex-col w-[20%] text-center">
-         <Image className="w-[100px] relative left-5" src={SeLogo} alt="se Function logo"/>
+         <Image className="w-[100px] relative left-5 midtwo:w-[160px]" src={SeLogo} alt="se Function logo"/>
          <h2 className="font-bold">Sensação Extrovertida</h2>        
          </div>       
-         <div className="w-[80%]"><p className="text-[17px] font-semibold">A função de sensação extrovertida, 
+         <div className="w-[80%]"><p className="text-[17px] font-semibold majortwo3:text-[15px]">A função de sensação extrovertida, 
          dominante nos tipos de personalidade ESFP e ESTP, é caracterizada por uma atenção aguçada aos estímulos 
          sensoriais do ambiente. Essa função está associada a uma apreciação do momento presente, uma busca por 
          experiências sensoriais intensas, e uma abordagem prática e hands-on da vida. <br /> A sensação extrovertida, ou 
@@ -119,12 +121,12 @@ Termos como presença no momento, ação imediata, experiências sensoriais e pr
  agir são características distintivas dos indivíduos que têm a sensação extrovertida como predominante em sua personalidade.</p></div>   
 </div>
 <h1 className="text-green-700 text-[40px]">Pensamento</h1>
-<div className="flex mt-5">
+<div className="flex mt-5 majortwo4:flex-col majortwo4:items-center majortwo4:justify-center majortwo4:text-center">
    <div className="flex flex-col w-[20%] text-center">
-         <Image className="w-[100px] relative left-5" src={TiLogo} alt="ti Function logo"/>
+         <Image className="w-[100px] relative left-5 midtwo:w-[160px]" src={TiLogo} alt="ti Function logo"/>
          <h2 className="font-bold">Pensamento Introvertido</h2>        
          </div>       
-         <div className="w-[80%]"><p className="text-[17px] font-semibold">A função de pensamento introvertido, 
+         <div className="w-[80%]"><p className="text-[17px] font-semibold majortwo3:text-[15px]">A função de pensamento introvertido, 
          predominante nos tipos de personalidade INTP e ISTP, é caracterizada por uma abordagem analítica, reflexiva 
          e voltada para a visão de longo prazo. Essa função está associada a conceitos como planejamento estratégico,
           análise profunda, formulação de ideias complexas e tomada de decisões baseada em princípios internos. 
@@ -142,12 +144,12 @@ uma abordagem cuidadosa e detalhada na resolução de problemas e na implementa�
   em sua personalidade.
 </p></div>   
 </div>
-<div className="flex mt-5">
+<div className="flex mt-5 majortwo4:flex-col majortwo4:items-center majortwo4:justify-center majortwo4:text-center">
    <div className="flex flex-col w-[20%] text-center">
-         <Image className="w-[100px] relative left-5" src={TeLogo} alt=" te Function logo"/>
-         <h2 className="font-bold">Pensamento Extrovertido</h2>        
+         <Image className="w-[160px] midtwo:w-[190px] relative left-5 " src={TeLogo} alt=" te Function logo"/>
+         <h2 className="font-bold text-center">Pensamento Extrovertido</h2>        
          </div>       
-         <div className="w-[80%]"><p className="text-[17px] font-semibold">A função de pensamento extrovertido, 
+         <div className="w-[80%]"><p className="text-[17px] font-semibold majortwo3:text-[15px]">A função de pensamento extrovertido, 
          predominante nos tipos de personalidade ENTJ e ESTJ, é caracterizada por uma abordagem prática, lógica e
           orientada para resultados. Essa função está associada a conceitos como organização, eficiência, ação decisiva,
            foco em objetivos e liderança assertiva. O pensamento extrovertido, ou Te, se manifesta por meio da busca por
@@ -163,12 +165,12 @@ associados à função de pensamento extrovertido. Essa função contribui para 
   distintivas dos indivíduos com o pensamento extrovertido predominante em sua personalidade.</p></div>   
 </div>
 <h1 className="text-red-600 text-[40px]">Sentimento</h1>
-<div className="flex mt-5">
+<div className="flex mt-5 majortwo4:flex-col majortwo4:items-center majortwo4:justify-center majortwo4:text-center">
    <div className="flex flex-col w-[20%] text-center">
-         <Image className="w-[100px] relative left-5" src={FiLogo} alt="Function logo"/>
+         <Image className="w-[100px] relative left-5 midtwo:w-[160px]" src={FiLogo} alt="Function logo"/>
          <h2 className="font-bold">Sentimento Introvertido</h2>        
          </div>       
-         <div className="w-[80%]"><p className="text-[17px] font-semibold">A função de sentimento introvertido,
+         <div className="w-[80%]"><p className="text-[17px] font-semibold majortwo3:text-[15px]">A função de sentimento introvertido,
           predominante nos tipos de personalidade INFP e ISFP, é caracterizada por uma abordagem subjetiva, voltada
            para valores pessoais e expressão emocional individual. Essa função está associada a conceitos como empatia,
             sensibilidade, valores pessoais profundos e tomada de decisões baseada em considerações internas. O sentimento introvertido,
@@ -186,12 +188,12 @@ princípios internos são frequentemente associados à função de sentimento in
  predominante em sua personalidade.
 </p></div>   
 </div>
-<div className="flex mt-5">
+<div className="flex mt-5 majortwo4:flex-col majortwo4:items-center majortwo4:justify-center majortwo4:text-center">
    <div className="flex flex-col w-[20%] text-center">
-         <Image className="w-[100px] relative left-5" src={FeLogo} alt="Function logo"/>
+         <Image className="w-[100px] relative left-5 midtwo:w-[160px]" src={FeLogo} alt="Function logo"/>
          <h2 className="font-bold">Sentimento Extrovertido</h2>        
          </div>       
-         <div className="w-[80%]"><p className="text-[17px] font-semibold">A função de sentimento extrovertido,
+         <div className="w-[80%]"><p className="text-[17px] font-semibold majortwo3:text-[15px]">A função de sentimento extrovertido,
           predominante nos tipos de personalidade ESFJ e ENFJ, é caracterizada por uma abordagem voltada para as 
           relações interpessoais, considerações sociais e empatia expressa de maneira externa. Essa função está associada
            a conceitos como harmonia, cuidado com os outros, valores sociais compartilhados e tomada de decisões baseada
@@ -210,11 +212,10 @@ Termos como empatia externa, criação de harmonia social, apoio emocional a out
 </div>
 
 <div className="flex flex-col items-center justify-center mt-20">
-    <h1 className="text-[34px] font-bold">Pensamento, Sentimento, Sensação & Intuição</h1>
-<Image src={Functionstypesrp} className="w-[400px]"/>
+    <h1 className="text-[34px] font-bold  majorfour:text-[28px] midfour:text-[18px]">Pensamento, Sentimento, Sensação & Intuição</h1>
+<Image src={Functionstypesrp} className="w-[400px] majorfour1:w-[80%]"/>
 </div>
-
-                </div>
+</MainDiv>
                 <NavVertBar />
             </div>
             <div className="flex items-center justify-center">
