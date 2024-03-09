@@ -6,6 +6,9 @@ import { useState } from "react";
 import Link from "next/link";
 
 export default function TestPage() {
+  const [mbtiType, setMbtiType] = useState("");
+  const [rangePoints, setRangePoints] = useState(Array(questions2.length).fill(50));
+  const [selectedRange, setSelectedRange] = useState(50);
   let [functionScores, setFunctionsScore] = useState({
     Fe: 0,
     Te: 0,
@@ -43,67 +46,135 @@ export default function TestPage() {
         [otherFunction]: otherScore >= 0 ? otherScore : 0,
       };
     };
-    if (index < 4) {
-      setFunctionsScore((prevScores) => updateScore({ ...prevScores }, "Ni", "Ne")
-      );
-    } else if (index < 8) {
-      setFunctionsScore((prevScores) => updateScore(prevScores, "Fi", "Fe"));
-    } else if (index < 12) {
-      setFunctionsScore((prevScores) => updateScore(prevScores, "Ti", "Te"));
-    } else if (index < 16) {
-      setFunctionsScore((prevScores) => updateScore(prevScores, "Si", "Se"));
+    
+    setFunctionsScore((prevScores) => {
+      if (index < 4) {
+        return updateScore({ ...prevScores }, "Ni", "Ne");
+      } else if (index < 8) {
+        return updateScore({ ...prevScores }, "Fi", "Fe");
+      } else if (index < 12) {
+        return updateScore({ ...prevScores }, "Ti", "Te");
+      } else if (index < 16) {
+        return updateScore({ ...prevScores }, "Si", "Se");
+      }
+  });
+};
+
+ const updateRangeScores = (selectedRange, index) => {
+  const getScoreChange = (newValue, oldValue) => {
+    if (newValue > oldValue) {
+      return newValue > 83 ? 1 : newValue > 67 ? 0.7 : newValue > 51 ? 0.5 : 0;
+    } else {
+      return oldValue > 83 ? -1 : oldValue > 67 ? -0.7 : oldValue > 51 ? -0.5 : 0;
     }
+  };
+
+  const updateFunctionScore = (functionName, oldValue) => {
+    setFunctionsScore((prevScores) => ({
+      ...prevScores,
+      [functionName]: prevScores[functionName] + getScoreChange(selectedRange, oldValue),
+    }));
+  };
+
+  switch (true) {
+    case index < 3:
+      updateFunctionScore("Ne", rangePoints[index]);
+      break;
+    case index < 6:
+      updateFunctionScore("Ni", rangePoints[index]);
+      break;
+    case index < 9:
+      updateFunctionScore("Se", rangePoints[index]);
+      break;
+    case index < 12:
+      updateFunctionScore("Si", rangePoints[index]);
+      break;
+    case index < 15:
+      updateFunctionScore("Te", rangePoints[index]);
+      break;
+    case index < 18:
+      updateFunctionScore("Ti", rangePoints[index]);
+      break;
+    case index < 21:
+      updateFunctionScore("Fe", rangePoints[index]);
+      break;
+    case index < 24:
+      updateFunctionScore("Fi", rangePoints[index]);
+      break;
+    default:
+      break;
+  }
+
+  setRangePoints((prevPoints) => {
+    const newPoints = [...prevPoints];
+    newPoints[index] = selectedRange;
+    return newPoints;
+  });
   };
 
    const determineMbtiType = () => {
-    let [mbtiType, setMbtiType] = useState("");
+    let currentType = "";
 
     if (functionScores.Te > functionScores.Fe && functionScores.Te > functionScores.Ne && functionScores.Te > functionScores.Se) {
       if (functionScores.Si > functionScores.Te && functionScores.Si > functionScores.Ni) {
-        setMbtiType("ISTJ");
+        currentType = "ISTJ";
     } else if (functionScores.Ni > functionScores.Te && functionScores.Ni > functionScores.Si) {
-      setMbtiType("INTJ");
+      currentType = "INTJ";
     } else if (functionScores.Si > functionScores.Ni) {
-      setMbtiType("ESTJ");
+      currentType = "ESTJ";
     } else if (functionScores.Ni > functionScores.Si) {
-      setMbtiType("ENTJ");
+      currentType = "ENTJ";
       }
     } else if (functionScores.Fe > functionScores.Te && functionScores.Fe > functionScores.Se && functionScores.Fe > functionScores.Ne) {
       if (functionScores.Si > functionScores.Fe && functionScores.Si > functionScores.Ni) {
-        setMbtiType("ISFJ");
+        currentType = "ISFJ";
       } else if (functionScores.Ni > functionScores.Fe && functionScores.Ni > functionScores.Si) {
-        setMbtiType("INFJ");
+        currentType = "INFJ";
       } else if (functionScores.Si > functionScores.Ni) {
-        setMbtiType("ESFJ");
+        currentType = "ESFJ";
       } else if (functionScores.Ni > functionScores.Si) {
-        setMbtiType("ENFJ");
+        currentType = "ENFJ";
       }
     } else if (functionScores.Ne > functionScores.Te && functionScores.Ne > functionScores.Se && functionScores.Ne > functionScores.Fe) {
       if (functionScores.Ti > functionScores.Ne && functionScores.Ti > functionScores.Fi) {
-        setMbtiType("INTP");
+        currentType = "INTP";
       } else if (functionScores.Fi > functionScores.Ne && functionScores.Fi > functionScores.Ti) {
-        setMbtiType("INFP");
+        currentType = "INFP";
       } else if (functionScores.Ti > functionScores.Fi) {
-        setMbtiType("ENTP");
+        currentType = "ENTP";
       } else if (functionScores.Fi > functionScores.Ti) {
-        setMbtiType("ENFP");
+        currentType = "ENFP";
       }
     } else if (functionScores.Se > functionScores.Te && functionScores.Se > functionScores.Fe && functionScores.Se > functionScores.Ne) {
       if (functionScores.Ti > functionScores.Se && functionScores.Ti > functionScores.Fi) {
-        setMbtiType("ISTP");
+        currentType = "ISTP";
       } else if (functionScores.Fi > functionScores.Se && functionScores.Fi > functionScores.Ti) {
-        setMbtiType("ISFP");
+        currentType = "ISFP";
       } else if (functionScores.Fi > functionScores.Ti) {
-        setMbtiType("ESFP");
+        currentType = "ESFP";
       } else if (functionScores.Ti > functionScores.Fi) {
-        setMbtiType("ESTP");
+        currentType = "ESTP";
       }
     }
-      return mbtiType;
+    setMbtiType(currentType);
+  };
+
+  const handleCompleteTest = () => {
+    determineMbtiType();
+    const divTest = document.getElementById("div-test");
+
+    if (divTest) {
+      divTest.style.display = "none";
+    }
+  
+    const divHidden = document.getElementById("result-div");
+  if (divHidden) {
+    divHidden.style.display = "flex";}
   };
   
   return (
-    <div className="div-test">
+    <div>
+    <div id="div-test" className="div-test">
       <h1 id="h1-test-title">Analise a si mesmo e responda o mais claramente que puder</h1>
       <div className="div-test">
         <h2>Perguntas Tipo 1</h2>
@@ -131,26 +202,48 @@ export default function TestPage() {
             </label>
           </div>
         ))}
+                <h2>Perguntas Tipo 2</h2>
+        {questions2.map((question, index) => (
+        <div key={index}>
+          <h3>
+                {question.pergunta}
+            </h3>
+            <div className="flex gap-4">
+                <p>Me identifico</p>
+            <input type="range"
+            id={`${question.cogfunc}-${index}`}
+            name={question.cogfunc}
+            min="0"
+            max="100"
+            step="1"
+            value={rangePoints[index]}
+            onChange={(e) => updateRangeScores(e.target.value, index)} />
+            <p>Não me identifico</p>
+            </div>
+            <p>{rangePoints[index]}</p>
+        </div>
+      ))}
       </div>
-
-      <div className="div-test flex items-center justify-center gap-5 pb-4">
-      <Link href="/resultpage">
   <button
     className="py-2 px-2 rounded-xl bg-slate-500"
-  >
+   onClick={() => {
+    // Determine o tipo MBTI quando o botão for clicado
+    handleCompleteTest();
+  }}>
     Descubra seu tipo
   </button>
-</Link>
-      </div>
       <div className="flex flex-col">{functionsData.map((func) => (
     <div key={func.name}>
       <p>{func.label}: {functionScores[func.name]}</p>
     </div>
   ))}</div>
-      <div className="hidden">
-        <h1>Seu tipo mais provável é:</h1>
-        <h2>tipo</h2>
       </div>
-    </div>
+  <div id="result-div" className="hidden w-full flex-col items-center justify-center">
+  <h1 className="text-2xl">Seu tipo mais provável é:</h1>
+      <div className="flex flex-col w-[70%] rounded-xl bg-slate-500 items-center justify-center">
+        <h1>{mbtiType}</h1>
+      </div>
+      </div>
+      </div>
   );
 }

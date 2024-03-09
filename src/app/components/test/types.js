@@ -3,7 +3,7 @@ export const mbtiTypes =  {
                  functions: ["Ni", "Fe", "Ti", "Se", "Ne", "Fi", "Te", "Si"],
                 pic: "/assets/mbti-char-imgs/infj.png",
                 descr: "Os INFJ...",
-                porcentagem: "" },
+            },
   INTJ: {       name: "INTJ",
          functions: ["Ni", "Te", "Fi", "Se","Ne", "Ti", "Fe", "Si"],
   pic: "/assets/mbti-char-imgs/png-transparent-architect-intj-myers-briggs-type-indicator-personality-career-rationality-purple-violet-architect.png",

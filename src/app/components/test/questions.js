@@ -27,7 +27,7 @@ export const questions1 = [
         id: "question1-4",
         "cogfunction1": "Ni",
         "cogfunction2": "Ne",
-        "question1": "Eu ao interagir com pessoas",
+        "question1": "Na minha imaginação",
         "answer1": "Gosto de explorar conceitos e ideias abstratas de maneira profunda e meio simbólica",
         "answer2": "Gosto de explorar conceitos e ideias abstratas de maneira ampla e criativa"
       },
@@ -52,8 +52,8 @@ export const questions1 = [
         "cogfunction1": "Fi",
         "cogfunction2": "Fe",
         "question1": "Eu ao entender algo",
-        "answer1": "Consigo me adaptar facilmente a diferentes contextos sociais",
-        "answer2": "Prefiro manter minha autenticidade, mesmo que isso signifique não me adaptar completamente"
+        "answer1":   "Prefiro manter minha autenticidade, mesmo que isso signifique não me adaptar completamente",
+        "answer2": "Consigo me adaptar facilmente a diferentes contextos sociais"
       },
       {
         id: "question1-8",
