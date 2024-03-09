@@ -8,11 +8,9 @@ export default function NavVertBar() {
             <hr />
             <li><a href="/eneagrama">Eneagrama</a></li>
             <hr />
-            <li><a href="">Tritipos</a></li>
+            <li><a href="/carljung">Carl Jung</a></li>
             <hr />
-            <li><a href="">Carl Jung</a></li>
-            <hr />
-            <li><a href="">Os 4 lados da personalidade</a></li>
+            <li><a href="/4sides">Os 4 lados da personalidade</a></li>
             <hr />
            </ul>
         </div>

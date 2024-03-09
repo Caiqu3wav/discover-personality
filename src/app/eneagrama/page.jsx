@@ -55,39 +55,43 @@ export default function Eneagrama() {
                              representando uma configuração específica de características e motivações.
 
 Vamos analisar a relação entre os tipos de eneagrama e os tipos MBTI com base nos dados fornecidos:</p>
-<p>Enneagrama 1:
+<p className="border-solid border-t-2 border-b-2 border-purple-700"><span className=" text-slate-400">Enneagrama 1:</span>
 
 Correlação com MBTI: Forte correlação com aqueles que preferem Sensação Introvertida (Si) na posição dominante ou auxiliar, além de uma correlação com a Introversão.
-Tipos MBTI associados: ISTJ, ESTJ, ISFJ e ESFJ (82% - 84% dos Enneagrama 1). <br />
-Enneagrama 2:
+Tipos MBTI associados: ISTJ, ESTJ, ISFJ e ESFJ (82% - 84% dos Enneagrama 1). <br /> <br />
+<span className=" text-red-500">Enneagrama 2:</span>
 
 Correlação com MBTI: Entre 93% e 98% dos Enneagrama 2 têm uma preferência por Sentimento sobre Pensamento, com uma correlação específica com Sentimento Extravertido.
-Tipos MBTI associados: ISFJ, ESFJ, ENFJ e INFJ (63% - 79% dos Enneagrama 2). <br />
-Enneagrama 3:
+Tipos MBTI associados: ISFJ, ESFJ, ENFJ e INFJ (63% - 79% dos Enneagrama 2). <br /><br />
+<span className=" text-yellow-300">Enneagrama 3:</span>
 
 Correlação com MBTI: Entre 82% e 91% dos Enneagrama 3 são Extravertidos, com uma forte correlação com essa dimensão.
-Tipos MBTI associados: ESTJ, ESFJ, ESTP e ESFP (62% - 74% dos Enneagrama 3), com ENTJ, ENTP e ENFJ sendo os tipos intuitivos mais propensos a serem um Enneagrama 3. <br />
-Enneagrama 4:
+Tipos MBTI associados: ESTJ, ESFJ, ESTP e ESFP (62% - 74% dos Enneagrama 3), com ENTJ, ENTP e ENFJ sendo os tipos intuitivos mais propensos a serem um Enneagrama 3. <br /><br />
+<span className="text-purple-400">Enneagrama 4:</span>
 
 Correlação com MBTI: Fortemente correlacionado com preferência por Intuição e Sentimento, e mais provável de ser associado à Introversão.
-Tipos MBTI associados: INFP, INFJ, ISFP e ENFP (42% - 57% dos Enneagrama 4).<br />
-Enneagrama 5:
+Tipos MBTI associados: INFP, INFJ, ISFP e ENFP (42% - 57% dos Enneagrama 4).<br /><br />
+<span className="text-blue-600">Enneagrama 5:</span>
 
 Correlação com MBTI: Geralmente associado a Introvertidos Pensadores, com INTP, ISTJ, INTJ e ISTP sendo os mais comuns (59% - 75% dos Enneagrama 5).<br />
-Enneagrama 6:
+<br /> <span className="text-red-400">Enneagrama 6:</span>
 
 Correlação com MBTI: Presente em números significativos em todos os tipos MBTI, mas mais fortemente correlacionado com tipos Sensoriais.
-Tipos MBTI associados: ISTJ e ISFJ (46% - 57% dos Enneagrama 6), com uma forte correlação com a Temperamento SJ.<br />
-Enneagrama 7:
+Tipos MBTI associados: ISTJ e ISFJ (46% - 57% dos Enneagrama 6), com uma forte correlação com a Temperamento SJ.<br /><br />
+<span className="text-yellow-600">Enneagrama 7:</span>
 
 Correlação com MBTI: Correlaciona-se fortemente com tipos EP - dominante Extraverted Intuition (ENFP, ENTP) e dominante Extraverted Sensing (ESFP, ESTP).<br />
-Enneagrama 8:
+<br />
+<span className="text-red-400">Enneagrama 8:</span>
 
 Correlação com MBTI: Mais comum para ENTJs, representando 32% - 46% dos casos. Tipos MBTI associados: ESTJ, ESTP e ENTJ (58% - 71% dos Enneagrama 8).<br />
-Enneagrama 9:
+<br />
+<span className="text-purple-700">Enneagrama 9:</span>
 
 Correlação com MBTI: Correlaciona-se com uma preferência por Sentimento, Introversão e ligeiramente com Sensação.
 Tipos MBTI associados: Predominantemente Introvertidos com preferência por Sentimento (79% - 83% dos Enneagrama 9).</p>
+<p>Esses dados foram obtidos de estudos que relacionaram as características dos tipos de eneagrama com as preferências MBTI. É importante notar que essas
+     correlações são padrões gerais e não regras rígidas, já que cada indivíduo é único e pode não se encaixar perfeitamente em um determinado padrão.</p>
                 </div>
             </MainDiv>
         </MainDivContainer>

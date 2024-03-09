@@ -19,7 +19,7 @@ import ISFJlg from "../../../../public/assets/mbti-char-imgs/isfj.png"
 
 export default function PersonalitiesHome() {
     return(
-        <div className="personalities-container grid grid-cols-4 majorthree0.5:grid-cols-2 bg-gray-400 w-[88%] majorthree2:w-[95%] rounded-lg mt-4">
+        <div id="tipos" className="personalities-container grid grid-cols-4 majorthree0.5:grid-cols-2 bg-gray-400 w-[88%] majorthree2:w-[95%] rounded-lg mt-4">
             <div className="personalities-home-content flex flex-col text-center items-center justify-center"><Image className="w-[150px]" src={INTJlg} />
             <h1>INTJ</h1>
             <h2>NI TE FI SE</h2> 

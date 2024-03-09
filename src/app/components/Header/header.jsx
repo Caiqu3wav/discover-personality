@@ -5,6 +5,8 @@ import "./header.css";
 import Link from "next/link";
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useEffect, useState } from "react";
+import { IoIosArrowDown } from "react-icons/io";
+import DropDown from "../Dropdown/DropDown";
 
 export default function Header() {
     const [isActive, setIsActive] = useState(false);
@@ -15,15 +17,15 @@ export default function Header() {
           path: '/',
         },
         {
-          title: 'Blogs',
-          path: '/blogs',
+          title: 'Tipos',
+          path: '#tipos',
         },
         {
           title: 'Sobre',
           path: '/about',
         },
-
       ];
+
   
     const toggleMenu = () => {
         setIsActive(!isActive);
@@ -50,13 +52,15 @@ export default function Header() {
     }, [isActive]);
   
     return(
-        <header className="h-[100px] lowone:h-[85px]">
+      <div className="h-[100px]">
+        <header className="h-[100px] w-full lowone:h-[85px] fixed">
             <nav className="justify-between flex">
             <Link href="/"><Image className="midtwo4:w-[140px] lowtwo:w-[110px]" src={DiscoveryLogo} alt="Discovery Logo"/></Link>
                 <ul className="flex flex-row gap-16 mt-8 majortwo4:hidden">
                     <Link href="/"><li>Home</li></Link>
-                    <li>Blogs</li>
+                    <DropDown/>
                     <Link href="/about"><li>Sobre</li></Link>
+                    <Link href="#tipos"><li>Tipos</li></Link>
                 </ul>
                 <button aria-label="Open Menu" onClick={toggleMenu} className="btn-hamburguer hidden self-center majortwo4:flex">
                 <GiHamburgerMenu size={60} className="text-green-400" />
@@ -89,5 +93,6 @@ export default function Header() {
       </aside>
             </nav>
         </header>
+        </div>
     )
 }

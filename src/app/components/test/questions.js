@@ -83,9 +83,9 @@ export const questions1 = [
         id: "question1-11",
         "cogfunction1": "Ti",
         "cogfunction2": "Te",
-        "question1": "O trabalho agora",
-        "answer1": "É útil ter um horário específico e organização",
-        "answer2": "É interessante não ser muito autoritário"
+        "question1": "Na organização de algum trabalho",
+        "answer1": "É interessante não ser muito autoritário",
+        "answer2": "É útil ter um horário específico e organização"
       },
       {
         id: "question1-12",
