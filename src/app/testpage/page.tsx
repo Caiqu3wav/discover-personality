@@ -233,12 +233,7 @@ export default function TestPage() {
   }}>
     Descubra seu tipo
   </button>
-      <div className="flex flex-col">{functionsData.map((func) => (
-    <div key={func.name}>
-      <p>{func.label}: {functionScores[func.name]}</p>
-    </div>
-  ))}</div>
-      </div>
+
   <div id="result-div" className="hidden w-full flex-col items-center justify-center">
   <h1 className="text-2xl">Seu tipo mais provável é:</h1>
       <div className="flex flex-col w-[70%] rounded-xl bg-slate-500 items-center justify-center">
