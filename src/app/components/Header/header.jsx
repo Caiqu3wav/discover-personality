@@ -53,7 +53,7 @@ export default function Header() {
   
     return(
       <div className="h-[100px]">
-        <header className="h-[100px] w-full lowone:h-[85px] fixed">
+        <header className="h-[100px] w-full lowone:h-[85px] fixed z-[1000]">
             <nav className="justify-between flex">
             <Link href="/"><Image className="midtwo4:w-[140px] lowtwo:w-[110px]" src={DiscoveryLogo} alt="Discovery Logo"/></Link>
                 <ul className="flex flex-row gap-16 mt-8 majortwo4:hidden">

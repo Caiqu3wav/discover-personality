@@ -176,7 +176,7 @@ export default function TestPage() {
     <div>
     <div id="div-test" className="div-test rounded-lg px-2 py-2 bg-slate-300">
       <h1 id="h1-test-title" className="text-3xl text-green-600">Analise a si mesmo e responda o mais claramente que puder</h1>
-      <h2 className=" font-semibold">(Teste em progressão e melhorias)</h2>
+            <h2 className=" font-semibold">(Teste em progressão e melhorias)</h2>   
       <div className="div-test">
         <h2>Perguntas Tipo 1</h2>
         {questions1.map((question, index) => (
@@ -233,6 +233,11 @@ export default function TestPage() {
   }}>
     Descubra seu tipo
   </button>
+      <div className="flex flex-col">{functionsData.map((func) => (
+    <div key={func.name}>
+      <p>{func.label}: {functionScores[func.name]}</p>
+    </div>
+  ))}</div>
       </div>
   <div id="result-div" className="hidden w-full flex-col items-center justify-center">
   <h1 className="text-2xl">Seu tipo mais provável é:</h1>
