@@ -1,5 +1,6 @@
 import Header from "../Header/header"
 import NavVertBar from "../NavVertBar/NavVertBar"
+import PersonalitiesHome from "../PersonalitiesHome/PersonalitiesHome"
 export default function MainDivContainer(props) {
     return(
         <div>
@@ -9,6 +10,7 @@ export default function MainDivContainer(props) {
                 {props.children}
                 <NavVertBar/>
             </div>
+            <PersonalitiesHome/>
         </main>
         </div>
     )

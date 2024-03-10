@@ -91,7 +91,7 @@ Permite processar informações através dos sentidos e Ajuda os INFJs a ficarem
     destacam em interações emocionais profundas.</span></span>
 <span className="font-semibold">Compatibilidade INFJ:</span>
 <br />
-<span>Boa compatibilidade com tipos de personalidade como <span className=" text-green-300">ENTP</span>, <span className=" text-yellow-300">ENFP</span> e <span className="text-blue-600">ESTP</span>.
+<span>Boa compatibilidade com tipos de personalidade como <span className=" text-green-300">ENTP</span>, <span className=" text-yellow-300">ENFP</span>.
 Menos compatíveis com <span className="text-red-600">ISTP</span>, <span className=" text-blue-200">ESTP.</span>
 Essa descrição destaca os traços essenciais do tipo de personalidade <span className="text-purple-600">INFJ</span>, oferecendo insights sobre como eles se relacionam, pensam e enfrentam desafios na vida cotidiana.</span></p>
       </MainDiv>
