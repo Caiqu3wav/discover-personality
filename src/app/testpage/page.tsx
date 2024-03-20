@@ -2,6 +2,7 @@
 import { questions1 } from "../components/test/questions.js";
 import { questions2 } from "../components/test/questions.js";
 import "./test.css";
+import QuestionCard from "../components/QuestionCard/QuestionCard.jsx"
 import { useState } from "react";
 import Link from "next/link";
 
@@ -9,6 +10,8 @@ export default function TestPage() {
   const [mbtiType, setMbtiType] = useState("");
   const [rangePoints, setRangePoints] = useState(Array(questions2.length).fill(50));
   const [selectedRange, setSelectedRange] = useState(50);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [selectedAnswers, setSelectedAnswers] = useState(Array(questions1.length).fill(""));
   let [functionScores, setFunctionsScore] = useState({
     Fe: 0,
     Te: 0,
@@ -48,13 +51,13 @@ export default function TestPage() {
     };
     
     setFunctionsScore((prevScores) => {
-      if (index < 4) {
+      if (index < 6) {
         return updateScore({ ...prevScores }, "Ni", "Ne");
-      } else if (index < 8) {
-        return updateScore({ ...prevScores }, "Fi", "Fe");
       } else if (index < 12) {
+        return updateScore({ ...prevScores }, "Fi", "Fe");
+      } else if (index < 18) {
         return updateScore({ ...prevScores }, "Ti", "Te");
-      } else if (index < 16) {
+      } else if (index < 24) {
         return updateScore({ ...prevScores }, "Si", "Se");
       }
   });
@@ -171,68 +174,67 @@ export default function TestPage() {
   if (divHidden) {
     divHidden.style.display = "flex";}
   };
+
+  const handleNextQuestion = () => {
+  
+    const currentSelectedAnswer = selectedAnswers[currentQuestionIndex];
+    if (currentSelectedAnswer !== "") {
+      if (currentQuestionIndex === totalQuestions - 1) {
+        return null;
+      } else {
+        setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+      }
+    } else {
+      alert("Responda antes de avançar!");
+    }
+    };
+
+  const handlePreviousQuestion = () => {
+    if (currentQuestionIndex == 0) {
+      return null;
+    }
+    setCurrentQuestionIndex((prevIndex) => prevIndex - 1);
+  };
+
+  const totalQuestions = questions1.length
   
   return (
     <div>
-    <div id="div-test" className="div-test rounded-lg px-2 py-2 bg-slate-300">
+    <div id="div-test" className="div-test flex flex-col rounded-lg px-2 py-2 bg-slate-300">
       <h1 id="h1-test-title" className="text-3xl text-green-600">Analise a si mesmo e responda o mais claramente que puder</h1>
             <h2 className=" font-semibold">(Teste em progressão e melhorias)</h2>   
-      <div className="div-test">
+      <div className="div-test flex flex-col">
         <h2>Perguntas Tipo 1</h2>
-        {questions1.map((question, index) => (
-          <div key={index}>
-            <p>{question.question1}</p>
-            <label className="lbl-test">
-              <input
-                type="radio"
-                name={`${question.question1}-answer`}
-                value="answer1"
-                onChange={() => handleAnswerSelection("answer1",
-                index)}
-              />
-              {question.answer1}
-            </label>
-            <label>
-              <input
-                type="radio"
-                name={`${question.question1}-answer`}
-                value="answer2"
-                onChange={() => handleAnswerSelection("answer2", index)}
-              />
-              {question.answer2}
-            </label>
-          </div>
-        ))}
-                <h2>Perguntas Tipo 2</h2>
-        {questions2.map((question, index) => (
-        <div key={index}>
-          <h3>
-                {question.pergunta}
-            </h3>
-            <div className="flex gap-4">
-                <p>Me identifico</p>
-            <input type="range"
-            id={`${question.cogfunc}-${index}`}
-            name={question.cogfunc}
-            min="0"
-            max="100"
-            step="1"
-            value={rangePoints[index]}
-            onChange={(e) => updateRangeScores(e.target.value, index)} />
-            <p>Não me identifico</p>
-            </div>
-            <p>{rangePoints[index]}</p>
-        </div>
-      ))}
+        {currentQuestionIndex < questions1.length && (
+                    <QuestionCard
+                    id={questions1[currentQuestionIndex].id}
+                    title={questions1[currentQuestionIndex].questionTitle}
+                    answer1={questions1[currentQuestionIndex].answer1}
+                    answer2={questions1[currentQuestionIndex].answer2}
+                    selectedAnswer={selectedAnswers[currentQuestionIndex]}
+                    setSelectedAnswer={(answer: any) =>
+                      setSelectedAnswers((prevAnswers) =>
+                        prevAnswers.map((prevAnswer, index) =>
+                          index === currentQuestionIndex ? answer : prevAnswer
+                        )
+                      )
+                    }
+                    handleAnswerSelection={handleAnswerSelection}
+                    prevQuestion={handlePreviousQuestion}
+                    nextQuestion={handleNextQuestion}
+                    index={currentQuestionIndex}
+          totalQuestions={totalQuestions}
+                  />
+                )}
       </div>
   <button
-    className="py-2 px-2 rounded-xl bg-slate-500"
+    className="py-2 px-2 rounded-xl bg-slate-500 self-center mt-3"
    onClick={() => {
-    // Determine o tipo MBTI quando o botão for clicado
     handleCompleteTest();
   }}>
     Descubra seu tipo
   </button>
+
       </div>
   <div id="result-div" className="hidden w-full flex-col items-center justify-center">
   <h1 className="text-2xl">Seu tipo mais provável é:</h1>
