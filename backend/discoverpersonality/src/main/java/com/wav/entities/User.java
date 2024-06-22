@@ -1,6 +1,7 @@
 package com.wav.entities;
 
 import jakarta.persistence.*;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -19,9 +20,10 @@ public class User {
     @Column
     private String email;
 
-    @ManyToOne
-    @JoinColumn(name = "mbti_type_id")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "mbti_type")
     private MBTIType mbtiType;
+
 
     public User() {
     }
