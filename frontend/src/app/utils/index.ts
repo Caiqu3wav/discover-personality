@@ -7,7 +7,7 @@ export const determineMbtiType = (functionScores, setMbtiType, setMbtiTypeLink) 
     if (functionScores.Te > functionScores.Fe && functionScores.Te > functionScores.Ne && functionScores.Te > functionScores.Se) {
       if (functionScores.Si > functionScores.Te && functionScores.Si > functionScores.Ni) {
         currentType = "ISTJ";
-        currentTypeLink = "/typespages/istj";
+        currentTypeLink = "/tyfopespages/istj";
     } else if (functionScores.Ni > functionScores.Te && functionScores.Ni > functionScores.Si) {
       currentType = "INTJ";
       currentTypeLink = "/typespages/intj";
