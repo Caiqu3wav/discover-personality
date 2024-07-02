@@ -4,6 +4,7 @@ import com.wav.entities.User;
 import com.wav.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,6 +14,9 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public User saveUser(User user) {
         return userRepository.save(user);
@@ -44,6 +48,19 @@ public class UserService {
             existingUser.setMbtiType(user.getMbtiType());
             return userRepository.save(existingUser);
         }
+        return null;
+    }
+
+    public User authenticate(String email, String password) {
+        Optional<User> userOptional = userRepository.findByEmail(email);
+
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            if (bCryptPasswordEncoder.matches(password, user.getPassword())) {
+                return user;
+            }
+        }
+
         return null;
     }
 }

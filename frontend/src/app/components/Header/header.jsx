@@ -5,10 +5,12 @@ import "./header.css";
 import Link from "next/link";
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useEffect, useState } from "react";
-import { IoIosArrowDown } from "react-icons/io";
 import DropDown from "../Dropdown/DropDown";
+import { AiOutlineLogin } from "react-icons/ai";
+import { useSession } from "next-auth/react";
 
 export default function Header() {
+    const { data: session } = useSession();
     const [isActive, setIsActive] = useState(false);
 
     const sideList = [
@@ -61,12 +63,25 @@ export default function Header() {
                     <DropDown/>
                     <Link href="/about"><li>Sobre</li></Link>
                     <Link href="#tipos"><li>Tipos</li></Link>
+                    <Link href="/testpage"><li>Teste</li></Link>
                 </ul>
+                
                 <button aria-label="Open Menu" onClick={toggleMenu} className="btn-hamburguer hidden self-center majortwo4:flex">
                 <GiHamburgerMenu size={60} className="text-green-400" />
 </button>
-                <Link href="/testpage"><button className="rounded bg-green-600 text-white w-40 h-16 mt-4 mr-3 midfour:w-32
-                midfour1:w-24 midfour1:text-[14px]">Faça o Teste</button></Link>
+{session ? (
+                  <div className="rounded bg-green-600 flex flex-col items-center justify-center gap-1
+                 text-white w-40 h-16 mt-4 mr-3 midfour:w-32
+                midfour1:w-24 midfour1:text-[14px]">
+                  <p>Hi, <span>{session.user.username}</span></p>
+                  <p>TIPO: {session.user.mbti_type}</p>
+                  </div>
+                ) : 
+                <Link href="/auth/signin"><button className="rounded bg-green-600 flex items-center justify-center gap-1
+                 text-white w-40 h-16 mt-4 mr-3 midfour:w-32
+                midfour1:w-24 midfour1:text-[14px] transition-colors
+                hover:bg-yellow-200 hover:text-black"><AiOutlineLogin />Login</button></Link>
+              }
                 {isActive && (
         <div className="z-10 fixed inset-0 transition-opacity">
           <div
