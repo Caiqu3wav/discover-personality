@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import DropDown from "../Dropdown/DropDown";
 import { AiOutlineLogin } from "react-icons/ai";
 import { useSession } from "next-auth/react";
+import { SignOutBtn } from '../SignOutBtn';
 
 export default function Header() {
     const { data: session } = useSession();
@@ -76,12 +77,15 @@ export default function Header() {
                 <GiHamburgerMenu size={60} className="text-green-400" />
 </button>
 {session ? (
-                  <div className="rounded bg-green-600 flex flex-col items-center justify-center gap-1
-                 text-white w-40 h-16 mt-4 mr-3 midfour:w-32
+                  <div className="flex flex-col h-full justify-around">
+                  <div className="rounded text-[12px] bg-green-600 flex flex-col items-center justify-center gap-1
+                 text-white w-40 h-10 mr-3 midfour:w-32
                 midfour1:w-24 midfour1:text-[14px]">
-                  <p>Hi, <span>{session.user.username}</span></p>
-                  <p>TIPO: {session.user.mbti_type}</p>
+                  <p className="text-[12px]">Hi, <span>{session.user.username}</span></p>
+                  <p className="text-[12px]">TIPO: {session.user.mbtiType === null ? Indefinido : session.user.mbtiType}</p>
                   </div>
+                        <SignOutBtn/>
+                        </div>
                 ) : 
                 <Link href="/auth/signin"><button className="rounded bg-green-600 flex items-center justify-center gap-1
                  text-white w-40 h-16 mt-4 mr-3 midfour:w-32

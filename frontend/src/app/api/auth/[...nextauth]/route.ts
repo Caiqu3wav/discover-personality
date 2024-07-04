@@ -32,6 +32,7 @@ export const authOptions: AuthOptions = {
                     }
 
                     const user = res.data;
+                    console.log(user);
 
                     if (user) {
                         return user;
@@ -54,9 +55,9 @@ export const authOptions: AuthOptions = {
     async session({ session, token }) {
       if (session.user) {
         session.user.id = token.id as string;
-        session.user.username = token.username as string;
+        session.user.username = token.nome as string;
         session.user.email = token.email as string;
-        session.user.mbti_type = token.mbti_type as string;
+        session.user.mbtiType = token.mbtiType as string;
       }
       return session;
     },
@@ -65,7 +66,7 @@ export const authOptions: AuthOptions = {
         token.id = user.id;
         token.nome = user.username;
         token.email = user.email;
-        token.mbti_type = user.mbti_type;
+        token.mbtiType = user.mbtiType;
       }
       return token;
     }

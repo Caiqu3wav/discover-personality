@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     @Autowired
-    private AuthService authService;
+    private UserService userService;
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
-        User user = authService.authenticate(loginRequest.getEmail(), loginRequest.getPassword());
+        User user = userService.authenticate(loginRequest.getEmail(), loginRequest.getPassword());
 
         if (user != null) {
-            return ResponseEntity.ok(new AuthResponse(user.getId(), user.getUsername(), user.getEmail()));
+            return ResponseEntity.ok(new AuthResponse(user.getId(), user.getUsername(), user.getEmail(), user.getMbtiType()));
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password");
         }
@@ -52,13 +52,44 @@ class AuthResponse {
     private Long id;
     private String username;
     private String email;
-    private String mbti_type;
+    private String mbtiType;
 
-    public AuthResponse(Long id, String username, String email) {
+    public AuthResponse(Long id, String username, String email, String mbtiType) {
         this.id = id;
         this.username = username;
         this.email = email;
-        this.mbti_type = mbti_type;
+        this.mbtiType = mbtiType;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getMbtiType() {
+        return mbtiType;
+    }
+
+    public void setMbtiType(String mbtiType) {
+        this.mbtiType = mbtiType;
+    }
 }
