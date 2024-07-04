@@ -20,9 +20,8 @@ public class User {
     @Column
     private String email;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "mbti_type")
-    private MBTIType mbtiType;
+    @Column(name = "mbti_type", nullable = true)
+    private String mbtiType;
 
 
     public User() {
@@ -61,11 +60,11 @@ public class User {
         this.email = email;
     }
 
-    public MBTIType getMbtiType() {
+    public String getMbtiType() {
         return mbtiType;
     }
 
-    public void setMbtiType(MBTIType mbtiType) {
+    public void setMbtiType(String mbtiType) {
         this.mbtiType = mbtiType;
     }
 }

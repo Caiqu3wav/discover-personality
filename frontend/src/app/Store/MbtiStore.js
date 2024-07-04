@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { determineMbtiType } from '../utils/index';
 
 const useStore = create((set) => ({
     mbtiType: "",
@@ -32,11 +33,11 @@ const useStore = create((set) => ({
     return { selectedAnswers: newSelectedAnswers };
   }),
   updateFunctionScores: (newScores) => set({ functionScores: newScores }),
-  finalizeTest: () => set((state) => {
-    const mbtiType = determineMbtiType(state.functionScores);
-    const topThreeMbtiTypes = getTopThreeMbtiTypes(state.functionScores);
-    return { mbtiType, topThreeMbtiTypes };
+  finalizeTest: (router) => set((state) => {
+    const { currentType, currentTypeLink } = determineMbtiType(state.functionScores);
+    set({ mbtiType: currentType, mbtiTypeLink: currentTypeLink });
+    router.push(currentTypeLink);
   })
-}))
+}));
 
 export default useStore;

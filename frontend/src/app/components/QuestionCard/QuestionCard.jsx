@@ -10,7 +10,7 @@ index, totalQuestions, handleAnswerSelection, handleNext }) {
     const handleAnswerClick = (value) => {
         setSelectedAnswer(value);
         handleAnswerSelection(value, index);
-        handleNext();
+        nextQuestion();
     };
 
 
@@ -32,7 +32,7 @@ index, totalQuestions, handleAnswerSelection, handleNext }) {
             />
             <div className="flex gap-5">
             <button onClick={prevQuestion} className="rounded-full py-2 px-2 bg-green-300"><GrFormPrevious /></button>
-            <button onClick={nextQuestion} className="rounded-full py-2 px-2 bg-green-300"><MdNavigateNext /></button>
+            <button onClick={() => handleNext()} className="rounded-full py-2 px-2 bg-green-300"><MdNavigateNext /></button>
             </div>
             <p>
         {index + 1} de {totalQuestions}

@@ -12,6 +12,7 @@ import { useSession } from "next-auth/react";
 export default function Header() {
     const { data: session } = useSession();
     const [isActive, setIsActive] = useState(false);
+    const [topicLiOpen, setTopicLiOpen] = useState(false);
 
     const sideList = [
         {
@@ -26,6 +27,11 @@ export default function Header() {
           title: 'Sobre',
           path: '/about',
         },
+        {
+          title: 'Teste',
+          path: '/testpage',
+        },
+
       ];
 
   
@@ -99,12 +105,57 @@ export default function Header() {
       >
          
          {sideList.map(({ title, path }, index) => (
+          <>
     <Link href={path} key={index}>
         <span className="flex items-center p-4 hover:bg-white hover:text-black">
           <span className="border-b-4">{title}</span>
         </span>
     </Link>
+    </>
   ))}
+  <button className="w-full">
+        <span onClick={() => setTopicLiOpen(!topicLiOpen)} className="flex w-full items-center p-4 hover:bg-white hover:text-black">
+          <span className="border-b-4">a</span>
+        </span>
+        <ul className={`${topicLiOpen ? '' : 'hidden'}`}>
+        <li>
+                                <a
+                                    href="/functionspage"
+                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    onClick={() => setTopicLiOpen(false)}
+                                >
+                                    Funções Cognitivas
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/eneagrama"
+                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    onClick={() => setTopicLiOpen(false)}
+                                >
+                                    Eneagrama
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/carljung"
+                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    onClick={() => setTopicLiOpen(false)}
+                                >
+                                    Carl Jung
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/4sides"
+                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    onClick={() => setTopicLiOpen(false)}
+                                >
+                                    4 Lados da personalidade
+                                </a>
+                            </li>
+        </ul>
+    </button>
       </aside>
             </nav>
         </header>

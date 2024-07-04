@@ -17,25 +17,31 @@ export default function TestPage() {
     selectedAnswers,
     updateCurrentQuestionIndex,
     updateSelectedAnswers,
-    finalizeTest
+    finalizeTest,
+    mbtiTypeLink
   } = useStore();
   const router = useRouter();
  
-
   const handleAnswerSelection = (selectedAnswer, index) => {
     updateSelectedAnswers(index, selectedAnswer);
   }
 
   const handleNextQuestion = () => {
-    if (selectedAnswers[currentQuestionIndex] === "") {
-      alert("Responda antes de avançar!");
-      return;
-    }
-  
     if (currentQuestionIndex < questions1.length - 1) {
       updateCurrentQuestionIndex(currentQuestionIndex + 1);
     }
     };
+
+    const handleNext = () => {
+      if (selectedAnswers[currentQuestionIndex] === "") {
+        alert("Responda antes de avançar!");
+        return;
+      }
+    
+      if (currentQuestionIndex < questions1.length - 1) {
+        updateCurrentQuestionIndex(currentQuestionIndex + 1);
+      }
+      };
 
 
   const handlePreviousQuestion = () => {
@@ -45,11 +51,10 @@ export default function TestPage() {
   };
 
   const handleCompleteTest = () => {
-    finalizeTest();
-    router.push('/result'); // Redireciona para a página de resultados
+    finalizeTest(router);
   };
 
-  const totalQuestions = questions1.length
+  const totalQuestions = questions1.length;
   
   return (
     <div className="flex flex-col gap-3 pb-3">
@@ -70,7 +75,7 @@ export default function TestPage() {
                     nextQuestion={handleNextQuestion}
                     index={currentQuestionIndex}
           totalQuestions={totalQuestions}
-          handleNext={handleNextQuestion}
+          handleNext={handleNext}
                   />
                 )}
       </div>

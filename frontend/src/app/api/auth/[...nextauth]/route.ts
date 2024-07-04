@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 dotenv.config({ path: path.resolve(__dirname, '../../../../../.env') });
 import axios from 'axios'
+import { signOut, signIn } from 'next-auth/react';
 
 export const authOptions: AuthOptions = {
     providers: [
@@ -22,15 +23,15 @@ export const authOptions: AuthOptions = {
                 const { email, password } = credentials;
 
                 try {
-                    const res = await axios.post('http://localhost:8080/api/auth/signin', {
+                    const res = await axios.post(`${process.env.NEXT_PUBLIC_SPRING_API_URL}/api/auth/signin`, {
                          email, password
                     });
 
-                    if (!res.data.user) {
+                    if (!res.data) {
                         throw new Error('Authentication failed');
                     }
 
-                    const user = await res.data.user;
+                    const user = res.data;
 
                     if (user) {
                         return user;

@@ -1,6 +1,11 @@
+import { useRouter } from 'next/navigation';
 
+export default function redirectToMbtiType(mbtiTypeLink: any) {
+  const router = useRouter();
+  router.push(mbtiTypeLink);
+};
 
-export const determineMbtiType = (functionScores, setMbtiType, setMbtiTypeLink) => {
+export const determineMbtiType = (functionScores: any) => {
     let currentType = "";
     let currentTypeLink = "";
 
@@ -63,6 +68,9 @@ export const determineMbtiType = (functionScores, setMbtiType, setMbtiTypeLink) 
         currentTypeLink = "/typespages/estp";
       }
     }
-    setMbtiType(currentType);
-    setMbtiTypeLink(currentTypeLink);
+    return currentType
   };
+
+  export const getTopThreeMbtiTypes = () => {
+    
+  }

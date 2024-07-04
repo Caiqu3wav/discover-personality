@@ -19,6 +19,12 @@ public class UserService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public User saveUser(User user) {
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+
+        if (user.getMbtiType() == null || user.getMbtiType().isEmpty()) {
+            user.setMbtiType(null);
+        }
+
         return userRepository.save(user);
     }
 
@@ -43,7 +49,8 @@ public class UserService {
         if (existingUserOptional.isPresent()) {
             User existingUser = existingUserOptional.get();
             existingUser.setUsername(user.getUsername());
-            existingUser.setPassword(user.getPassword());
+            String encryptedPassword = bCryptPasswordEncoder.encode(user.getPassword());
+            existingUser.setPassword(encryptedPassword);
             existingUser.setEmail(user.getEmail());
             existingUser.setMbtiType(user.getMbtiType());
             return userRepository.save(existingUser);

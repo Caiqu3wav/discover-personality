@@ -1,6 +1,7 @@
 package com.wav.controllers;
 
 import com.wav.entities.User;
+import com.wav.services.AuthService;
 import com.wav.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,11 +13,11 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     @Autowired
-    private UserService userService;
+    private AuthService authService;
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
-        User user = userService.authenticate(loginRequest.getEmail(), loginRequest.getPassword());
+        User user = authService.authenticate(loginRequest.getEmail(), loginRequest.getPassword());
 
         if (user != null) {
             return ResponseEntity.ok(new AuthResponse(user.getId(), user.getUsername(), user.getEmail()));
