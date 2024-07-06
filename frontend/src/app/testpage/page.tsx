@@ -2,14 +2,15 @@
 import { questions1 } from "../components/test/questions.js";
 import { questions2 } from "../components/test/questions.js";
 import "./test.css";
-import QuestionCard from "../components/QuestionCard/QuestionCard.jsx"
+import QuestionCard from "../components/QuestionCard/QuestionCard"
 import { useState } from "react";
 import Header from "../components/Header/header.jsx";
 import Link from "next/link";
 import PersonalitiesHome from "../components/PersonalitiesHome/PersonalitiesHome";
 import { determineMbtiType } from "../utils/index";
-import useStore from "../Store/MbtiStore.js";
+import useStore from "../Store/MbtiStore";
 import { useRouter } from "next/navigation.js";
+import { Answer } from "../interfaces/index.js";
 
 export default function TestPage() {
   const {
@@ -17,31 +18,31 @@ export default function TestPage() {
     selectedAnswers,
     updateCurrentQuestionIndex,
     updateSelectedAnswers,
+    updateFunctionScores,
     finalizeTest,
-    mbtiTypeLink
+    mbtiTypeLink,
   } = useStore();
+
   const router = useRouter();
  
-  const handleAnswerSelection = (selectedAnswer, index) => {
-    updateSelectedAnswers(index, selectedAnswer);
-  }
+   const handleAnswerSelection = (index: number, answer: Answer) => {
+    updateSelectedAnswers(index, answer);
+    updateFunctionScores(answer);
+  };
 
   const handleNextQuestion = () => {
+    if (!selectedAnswers[currentQuestionIndex]) {
+      alert("Responda antes de avançar!");
+      return;
+    }
+      nextQuestion();
+    };
+
+   function nextQuestion() {
     if (currentQuestionIndex < questions1.length - 1) {
       updateCurrentQuestionIndex(currentQuestionIndex + 1);
     }
-    };
-
-    const handleNext = () => {
-      if (selectedAnswers[currentQuestionIndex] === "") {
-        alert("Responda antes de avançar!");
-        return;
-      }
-    
-      if (currentQuestionIndex < questions1.length - 1) {
-        updateCurrentQuestionIndex(currentQuestionIndex + 1);
-      }
-      };
+   }
 
 
   const handlePreviousQuestion = () => {
@@ -52,6 +53,7 @@ export default function TestPage() {
 
   const handleCompleteTest = () => {
     finalizeTest(router);
+    router.push(mbtiTypeLink);
   };
 
   const totalQuestions = questions1.length;
@@ -65,27 +67,24 @@ export default function TestPage() {
         {currentQuestionIndex < questions1.length && (
                     <QuestionCard
                     id={questions1[currentQuestionIndex].id}
-                    title={questions1[currentQuestionIndex].questionTitle}
-                    answer1={questions1[currentQuestionIndex].answer1}
-                    answer2={questions1[currentQuestionIndex].answer2}
+                    question={questions1[currentQuestionIndex]}
                     selectedAnswer={selectedAnswers[currentQuestionIndex]}
-                    setSelectedAnswer={(answer: any) => updateSelectedAnswers(currentQuestionIndex, answer)}
+                    setSelectedAnswer={(answer: Answer) => updateSelectedAnswers(currentQuestionIndex, answer)}
                     handleAnswerSelection={handleAnswerSelection}
                     prevQuestion={handlePreviousQuestion}
-                    nextQuestion={handleNextQuestion}
-                    index={currentQuestionIndex}
-          totalQuestions={totalQuestions}
-          handleNext={handleNext}
+                    handleNextQuestion={handleNextQuestion}
+                    totalQuestions={totalQuestions}
+                    currentQuestion={currentQuestionIndex}
+                    nextQuestion={nextQuestion}
                   />
                 )}
-      </div>
+            </div>
   <button
     className="py-2 px-2 rounded-xl bg-green-500 text-white hover:bg-slate-500 hover:text-blue-900 transition-all duration-500
     font-bold self-center mt-3"
    onClick={handleCompleteTest}>
     Descubra seu tipo
   </button>
-
       </div>
       <PersonalitiesHome/>
       </div>

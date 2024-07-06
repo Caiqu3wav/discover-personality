@@ -82,7 +82,7 @@ export default function Header() {
                  text-white w-40 h-10 mr-3 midfour:w-32
                 midfour1:w-24 midfour1:text-[14px]">
                   <p className="text-[12px]">Hi, <span>{session.user.username}</span></p>
-                  <p className="text-[12px]">TIPO: {session.user.mbtiType === null ? Indefinido : session.user.mbtiType}</p>
+                  <p className="text-[12px]">TIPO: {!session.user.mbtiType ? <span>Indefinido</span> : session.user.mbtiType}</p>
                   </div>
                         <SignOutBtn/>
                         </div>
@@ -109,21 +109,19 @@ export default function Header() {
       >
          
          {sideList.map(({ title, path }, index) => (
-          <>
     <Link href={path} key={index}>
         <span className="flex items-center p-4 hover:bg-white hover:text-black">
           <span className="border-b-4">{title}</span>
         </span>
     </Link>
-    </>
   ))}
   <button className="w-full">
         <span onClick={() => setTopicLiOpen(!topicLiOpen)} className="flex w-full items-center p-4 hover:bg-white hover:text-black">
-          <span className="border-b-4">a</span>
+          <span className="border-b-4 text-green-600">Tópicos</span>
         </span>
         <ul className={`${topicLiOpen ? '' : 'hidden'}`}>
-        <li>
-                                <a
+        <li key="/functionspage">
+                                  <a
                                     href="/functionspage"
                                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                     onClick={() => setTopicLiOpen(false)}
@@ -131,8 +129,8 @@ export default function Header() {
                                     Funções Cognitivas
                                 </a>
                             </li>
-                            <li>
-                                <a
+                            <li key="/eneagrama">
+                            <a
                                     href="/eneagrama"
                                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                     onClick={() => setTopicLiOpen(false)}
@@ -140,8 +138,8 @@ export default function Header() {
                                     Eneagrama
                                 </a>
                             </li>
-                            <li>
-                                <a
+                            <li key="/carljung">
+                            <a
                                     href="/carljung"
                                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                     onClick={() => setTopicLiOpen(false)}
@@ -149,8 +147,8 @@ export default function Header() {
                                     Carl Jung
                                 </a>
                             </li>
-                            <li>
-                                <a
+                            <li key="/4sides">
+                                   <a
                                     href="/4sides"
                                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                     onClick={() => setTopicLiOpen(false)}
