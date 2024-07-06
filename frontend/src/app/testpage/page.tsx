@@ -49,10 +49,8 @@ export default function TestPage() {
   };
 
   const handleCompleteTest = async () => {
-    finalizeTest();
-    
-    router.push(mbtiTypeLink);
-  };
+    finalizeTest(router, mbtiTypeLink);
+    };
 
   const totalQuestions = questions1.length;
   
@@ -77,7 +75,7 @@ export default function TestPage() {
                   />
                 )}
             </div>
-            
+
   <button
     className="py-2 px-2 rounded-xl bg-green-500 text-white hover:bg-slate-500 hover:text-blue-900 transition-all duration-500
     font-bold self-center mt-3"

@@ -4,6 +4,7 @@ import { determineMbtiType, getTopThreeMbtiTypes } from '../utils/index';
 import { questions1, questions2 } from '../components/test/questions';
 import { Answer } from '../interfaces';
 
+
 interface FunctionScores {
   Fe: number;
   Te: number;
@@ -30,7 +31,7 @@ interface StoreState {
   updateCurrentQuestionIndex: (index: number) => void;
   updateSelectedAnswers: (index: number, answer: Answer) => void;
   updateFunctionScores: (answer: Answer) => void;
-  finalizeTest: () => void;
+  finalizeTest: (router, link) => void;
 }
 
 const useStore = create<StoreState>((set) => ({
@@ -69,7 +70,7 @@ const useStore = create<StoreState>((set) => ({
     newFunctionScores[answer.cogFunction] += 1;
     return { functionScores: newFunctionScores };
   }),
-  finalizeTest: () => {
+  finalizeTest: (router, link) => {
     set((state) => {
       const { currentType, currentTypeLink } = determineMbtiType(state.functionScores);
       const topThreeMbtiTypes = getTopThreeMbtiTypes(state.functionScores);
@@ -81,6 +82,8 @@ const useStore = create<StoreState>((set) => ({
         topThreeMbtiTypes: topThreeMbtiTypes,
       };
     });
+    router.push(link);
   },
+
 }));
 export default useStore;
