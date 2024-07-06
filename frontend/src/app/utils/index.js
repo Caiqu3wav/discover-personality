@@ -1,5 +1,4 @@
 import { useRouter } from 'next/navigation';
-import axios from 'axios';
 
 export default function redirectToMbtiType(mbtiTypeLink) {
   const router = useRouter();
@@ -63,19 +62,3 @@ export const getTopThreeMbtiTypes = (functionScores) => {
   // Retornar os três tipos MBTI com maior pontuação
   return mbtiScores.slice(0, 3);
 };
-
- export const updateUserMbti = async (userId, mbtiType) => {
-      try {
-          const res = await axios.put(`${process.env.NEXT_PUBLIC_SPRING_API_URL}/api/users/update-mbti/${userId}`, {
-             mbtiType: mbtiType
-            });
-          if (res.status === 200) {
-            console.log('Tipo MBTI do usuário atualizado com sucesso');
-            return res.data;
-            } else {
-              console.error('Erro ao atualizar o tipo MBTI do usuário');
-            }
-      } catch (error) {
-        console.error("Erro ao atualizar mbti do usuário", error)
-      }
- }

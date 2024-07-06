@@ -6,12 +6,8 @@ import Link from "next/link";
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useEffect, useState } from "react";
 import DropDown from "../Dropdown/DropDown";
-import { AiOutlineLogin } from "react-icons/ai";
-import { useSession } from "next-auth/react";
-import { SignOutBtn } from '../SignOutBtn';
 
 export default function Header() {
-    const { data: session } = useSession();
     const [isActive, setIsActive] = useState(false);
     const [topicLiOpen, setTopicLiOpen] = useState(false);
 
@@ -70,28 +66,15 @@ export default function Header() {
                     <DropDown/>
                     <Link href="/about"><li>Sobre</li></Link>
                     <Link href="#tipos"><li>Tipos</li></Link>
-                    <Link href="/testpage"><li>Teste</li></Link>
                 </ul>
                 
                 <button aria-label="Open Menu" onClick={toggleMenu} className="btn-hamburguer hidden self-center majortwo4:flex">
                 <GiHamburgerMenu size={60} className="text-green-400" />
 </button>
-{session ? (
-                  <div className="flex flex-col h-full justify-around">
-                  <div className="rounded text-[12px] bg-green-600 flex flex-col items-center justify-center gap-1
-                 text-white w-40 h-10 mr-3 midfour:w-32
-                midfour1:w-24 midfour1:text-[14px]">
-                  <p className="text-[12px]">Hi, <span>{session.user.username}</span></p>
-                  <p className="text-[12px]">TIPO: {!session.user.mbtiType ? <span>Indefinido</span> : <span>{session.user.mbtiType}</span>}</p>
-                  </div>
-                        <SignOutBtn/>
-                        </div>
-                ) : 
-                <Link href="/auth/signin"><button className="rounded bg-green-600 flex items-center justify-center gap-1
+                <Link href="/testpage"><button className="rounded bg-green-600 flex items-center justify-center gap-1
                  text-white w-40 h-16 mt-4 mr-3 midfour:w-32
                 midfour1:w-24 midfour1:text-[14px] transition-colors
-                hover:bg-yellow-200 hover:text-black"><AiOutlineLogin />Login</button></Link>
-              }
+                hover:bg-yellow-200 hover:text-black">Teste</button></Link>
                 {isActive && (
         <div className="z-10 fixed inset-0 transition-opacity">
           <div
@@ -103,7 +86,8 @@ export default function Header() {
       )}
 
       <aside
-        className={`transform top-0 left-0 w-64 bg-red-200 bg-opacity-95 lowtwo2:w-44 lowthreetwo:w-36 text-white font-extrabold fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30 ${
+        className={`transform top-0 left-0 w-64 bg-red-200 bg-opacity-95 lowtwo2:w-44 lowthreetwo:w-36 text-white font-extrabold 
+          fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30 ${
           isActive ? "translate-x-0" : "-translate-x-full"
         }`}
       >
