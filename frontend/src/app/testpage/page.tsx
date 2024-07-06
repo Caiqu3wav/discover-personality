@@ -7,6 +7,7 @@ import PersonalitiesHome from "../components/PersonalitiesHome/PersonalitiesHome
 import useStore from "../Store/MbtiStore";
 import { useRouter } from "next/navigation.js";
 import { Answer } from "../interfaces/index.js";
+import { useState } from "react";
 
 export default function TestPage() {
   const {
@@ -19,6 +20,8 @@ export default function TestPage() {
     mbtiTypeLink,
     mbtiType
   } = useStore();
+  const [isGeneratedResult, setIsGeneratedResult] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
  
@@ -48,9 +51,18 @@ export default function TestPage() {
     }
   };
 
-  const handleCompleteTest = async () => {
+  const handleCompleteTest = () => {
     finalizeTest(router, mbtiTypeLink);
     };
+
+  const handleGenerateResult = () => {
+    finalizeTest(router, mbtiTypeLink);
+    setIsGeneratedResult(true)
+    setIsLoading(true)
+    setTimeout(() => {
+        setIsLoading(false)
+    }, 3000)
+  }
 
   const totalQuestions = questions1.length;
   
@@ -75,13 +87,25 @@ export default function TestPage() {
                   />
                 )}
             </div>
-
+            {currentQuestionIndex === totalQuestions - 1 && (
+   !isGeneratedResult ? (
+    <button
+    className="py-2 px-2 rounded-xl bg-green-500 text-white hover:bg-slate-500 hover:text-blue-900 transition-all duration-500
+    font-bold self-center mt-3"
+   onClick={handleGenerateResult}>
+    Gerar resultado
+  </button>
+   ) : isLoading ? (
+    <div className="lds-ring self-center mt-3"><div></div><div></div><div></div><div></div></div>
+   ) : (
   <button
     className="py-2 px-2 rounded-xl bg-green-500 text-white hover:bg-slate-500 hover:text-blue-900 transition-all duration-500
     font-bold self-center mt-3"
    onClick={handleCompleteTest}>
     Descubra seu tipo
   </button>
+   )
+  )}
       </div>
       <PersonalitiesHome/>
       </div>
