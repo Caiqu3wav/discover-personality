@@ -82,7 +82,7 @@ export default function Header() {
                  text-white w-40 h-10 mr-3 midfour:w-32
                 midfour1:w-24 midfour1:text-[14px]">
                   <p className="text-[12px]">Hi, <span>{session.user.username}</span></p>
-                  <p className="text-[12px]">TIPO: {!session.user.mbtiType ? <span>Indefinido</span> : session.user.mbtiType}</p>
+                  <p className="text-[12px]">TIPO: {!session.user.mbtiType ? <span>Indefinido</span> : <span>{session.user.mbtiType}</span>}</p>
                   </div>
                         <SignOutBtn/>
                         </div>

@@ -7,6 +7,7 @@ declare module "next-auth" {
       username: string;
       email: string;
       mbtiType: string;
+      password: string;
     } & DefaultSession["user"];
   }
 
@@ -14,6 +15,7 @@ declare module "next-auth" {
     id: string;
     username: string;
     email: string;
-    mbtiType: string;
+    mbti_type: string;
+    password: string;
   }
 }

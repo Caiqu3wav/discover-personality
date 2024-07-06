@@ -21,8 +21,8 @@ public class UserService {
     public User saveUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 
-        if (user.getMbtiType() == null || user.getMbtiType().isEmpty()) {
-            user.setMbtiType(null);
+        if (user.getMbti_type() == null || user.getMbti_type().isEmpty()) {
+            user.setMbti_type(null);
         }
 
         return userRepository.save(user);
@@ -52,7 +52,21 @@ public class UserService {
             String encryptedPassword = bCryptPasswordEncoder.encode(user.getPassword());
             existingUser.setPassword(encryptedPassword);
             existingUser.setEmail(user.getEmail());
-            existingUser.setMbtiType(user.getMbtiType());
+            existingUser.setMbti_type(user.getMbti_type());
+            return userRepository.save(existingUser);
+        }
+        return null;
+    }
+
+    public User updateMbti_type(Long id, String mbtiType) {
+        if (mbtiType == null || mbtiType.isEmpty()) {
+            throw new IllegalArgumentException("MBTI type cannot be null or empty");
+        }
+
+        Optional<User> existingUserOptional = userRepository.findById(id);
+        if (existingUserOptional.isPresent()) {
+            User existingUser = existingUserOptional.get();
+            existingUser.setMbti_type(mbtiType);
             return userRepository.save(existingUser);
         }
         return null;

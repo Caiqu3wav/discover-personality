@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/users")
@@ -31,6 +31,13 @@ public class UserController {
         @PutMapping("/update/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
         User updatedUser = userService.updateUser(id, user);
+        return updatedUser != null ? ResponseEntity.ok(updatedUser) : ResponseEntity.notFound().build();
+    }
+
+    @PutMapping("/update-mbti/{id}")
+    public ResponseEntity<User> updateMbtiType(@PathVariable Long id, @RequestBody Map<String, String> request) {
+        String mbtiType = request.get("mbtiType");
+        User updatedUser = userService.updateMbti_type(id, mbtiType);
         return updatedUser != null ? ResponseEntity.ok(updatedUser) : ResponseEntity.notFound().build();
     }
 

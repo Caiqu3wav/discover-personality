@@ -20,7 +20,7 @@ public class AuthController {
         User user = userService.authenticate(loginRequest.getEmail(), loginRequest.getPassword());
 
         if (user != null) {
-            return ResponseEntity.ok(new AuthResponse(user.getId(), user.getUsername(), user.getEmail(), user.getMbtiType()));
+            return ResponseEntity.ok(new AuthResponse(user.getId(), user.getUsername(), user.getEmail(), user.getMbti_type()));
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password");
         }
@@ -85,11 +85,11 @@ class AuthResponse {
         this.email = email;
     }
 
-    public String getMbtiType() {
+    public String getMbti_type() {
         return mbtiType;
     }
 
-    public void setMbtiType(String mbtiType) {
+    public void setMbti_type(String mbtiType) {
         this.mbtiType = mbtiType;
     }
 }

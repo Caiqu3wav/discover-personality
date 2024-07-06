@@ -1,16 +1,14 @@
 'use client';
 import { questions1 } from "../components/test/questions.js";
-import { questions2 } from "../components/test/questions.js";
 import "./test.css";
 import QuestionCard from "../components/QuestionCard/QuestionCard"
-import { useState } from "react";
 import Header from "../components/Header/header.jsx";
-import Link from "next/link";
 import PersonalitiesHome from "../components/PersonalitiesHome/PersonalitiesHome";
-import { determineMbtiType } from "../utils/index";
 import useStore from "../Store/MbtiStore";
 import { useRouter } from "next/navigation.js";
 import { Answer } from "../interfaces/index.js";
+import { useSession, signIn } from "next-auth/react";
+import { updateUserMbti } from "../utils/index.js";
 
 export default function TestPage() {
   const {
@@ -21,9 +19,11 @@ export default function TestPage() {
     updateFunctionScores,
     finalizeTest,
     mbtiTypeLink,
+    mbtiType
   } = useStore();
 
   const router = useRouter();
+  const { data: session } = useSession();
  
    const handleAnswerSelection = (index: number, answer: Answer) => {
     updateSelectedAnswers(index, answer);
@@ -51,8 +51,21 @@ export default function TestPage() {
     }
   };
 
-  const handleCompleteTest = () => {
-    finalizeTest(router);
+  const handleCompleteTest = async () => {
+    finalizeTest();
+    if (session?.user && mbtiType) {
+      try {
+        await updateUserMbti(session.user.id, mbtiType);
+
+        await signIn('credentials', {
+          redirect: false,
+          email: session.user.email,
+          password: session.user.password,
+      });
+      } catch (error) {
+        console.error("Erro ao atualizar MBTI do usuário", error);
+      }
+    }
     router.push(mbtiTypeLink);
   };
 

@@ -30,7 +30,7 @@ interface StoreState {
   updateCurrentQuestionIndex: (index: number) => void;
   updateSelectedAnswers: (index: number, answer: Answer) => void;
   updateFunctionScores: (answer: Answer) => void;
-  finalizeTest: (router: any) => void;
+  finalizeTest: () => void;
 }
 
 const useStore = create<StoreState>((set) => ({

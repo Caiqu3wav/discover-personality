@@ -1,11 +1,9 @@
 import NextAuth, { AuthOptions } from "next-auth";
 import CredentialsProvider from 'next-auth/providers/credentials';
-import bcrypt from 'bcryptjs';
 import dotenv from 'dotenv';
 import path from 'path';
 dotenv.config({ path: path.resolve(__dirname, '../../../../../.env') });
 import axios from 'axios'
-import { signOut, signIn } from 'next-auth/react';
 
 export const authOptions: AuthOptions = {
     providers: [
@@ -66,7 +64,8 @@ export const authOptions: AuthOptions = {
         token.id = user.id;
         token.nome = user.username;
         token.email = user.email;
-        token.mbtiType = user.mbtiType;
+        token.mbtiType = user.mbti_type;
+        token.password = user.password;
       }
       return token;
     }
